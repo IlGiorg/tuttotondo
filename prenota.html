@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Prenota la tua Attività</h1>
+    <form id="prenotaForm">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="surname">Cognome:</label><br>
+        <input type="text" id="surname" name="surname" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label>Attività:</label><br>
+        <input type="checkbox" name="activity" value="Yoga"> Yoga<br>
+        <input type="checkbox" name="activity" value="Pilates"> Pilates<br>
+        <input type="checkbox" name="activity" value="Zumba"> Zumba<br>
+        <button type="submit">Prenota</button>
+    </form>
+    <p id="message"></p>
+    <script src="app.js"></script>
+</body>
+</html>
