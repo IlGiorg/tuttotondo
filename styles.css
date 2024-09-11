@@ -1,0 +1,82 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50;
+    padding: 10px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+}
+
+#title {
+    font-size: 36px;
+    color: white;
+}
+
+#prenota-btn {
+    background-color: white;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    text-decoration: none;
+    color: #4CAF50;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#prenota-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#staff-access-btn {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: none;
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 18px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+form {
+    margin: 20px;
+}
+
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#activity-list {
+    text-align: left;
+    margin: 20px;
+}
