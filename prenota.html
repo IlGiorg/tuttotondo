@@ -4,24 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prenota</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Prenota la tua Attività</h1>
-    <form id="prenotaForm">
-        <label for="name">Nome:</label><br>
-        <input type="text" id="name" name="name" required><br>
-        <label for="surname">Cognome:</label><br>
-        <input type="text" id="surname" name="surname" required><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-        <label>Attività:</label><br>
-        <input type="checkbox" name="activity" value="Yoga"> Yoga<br>
-        <input type="checkbox" name="activity" value="Pilates"> Pilates<br>
-        <input type="checkbox" name="activity" value="Zumba"> Zumba<br>
-        <button type="submit">Prenota</button>
-    </form>
-    <p id="message"></p>
-    <script src="app.js"></script>
+    <h1>Prenota un'attività</h1>
+    <p id="prenota-status"></p>
+
+    <div id="prenota-container">
+        <form id="prenota-form">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="surname">Cognome:</label>
+            <input type="text" id="surname" name="surname" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label>Seleziona le Attività:</label><br>
+            <div id="activity-list"></div>
+
+            <button type="submit">Prenota</button>
+        </form>
+        <p id="response-message"></p>
+    </div>
 </body>
 </html>
