@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenotazioni del Mese</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td .name-with-timestamp {
+            position: relative;
+        }
+
+        td .name-with-timestamp:hover::after {
+            content: attr(data-timestamp);
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            top: -30px;
+            left: 0;
+            white-space: nowrap;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prenotazioni del Mese</h1>
+    <table id="prenotazioni-table">
+        <thead>
+            <tr id="activity-header">
+                <!-- Activity headers will be dynamically added here -->
+            </tr>
+        </thead>
+        <tbody id="prenotazioni-body">
+            <!-- Prenotazioni rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch the prenotazioni from the backend (replace with actual API endpoint)
+            fetch('https://your-backend-url.com/api/prenotazioni')
+                .then(response => response.json())
+                .then(data => {
+                    displayPrenotazioniByActivity(data);
+                })
+                .catch(error => console.error('Error fetching prenotazioni:', error));
+        });
+
+        function displayPrenotazioniByActivity(prenotazioni) {
+            const activityMap = {};
+
+            // Group prenotazioni by activity
+            prenotazioni.forEach(prenotazione => {
+                prenotazione.activities.split(', ').forEach(activity => {
+                    if (!activityMap[activity]) {
+                        activityMap[activity] = [];
+                    }
+                    activityMap[activity].push({
+                        name: `${prenotazione.name} ${prenotazione.surname}`,
+                        timestamp: new Date(prenotazione.timestamp).toLocaleString()
+                    });
+                });
+            });
+
+            // Add activity headers
+            const activityHeader = document.getElementById('activity-header');
+            Object.keys(activityMap).forEach(activity => {
+                const th = document.createElement('th');
+                th.textContent = activity;
+                activityHeader.appendChild(th);
+            });
+
+            // Add names under each activity
+            const prenotazioniBody = document.getElementById('prenotazioni-body');
+            const maxRows = Math.max(...Object.values(activityMap).map(names => names.length));
+
+            for (let i = 0; i < maxRows; i++) {
+                const tr = document.createElement('tr');
+                Object.keys(activityMap).forEach(activity => {
+                    const td = document.createElement('td');
+                    const participant = activityMap[activity][i];
+                    if (participant) {
+                        const span = document.createElement('span');
+                        span.classList.add('name-with-timestamp');
+                        span.textContent = participant.name;
+                        span.setAttribute('data-timestamp', participant.timestamp);
+                        td.appendChild(span);
+                    }
+                    tr.appendChild(td);
+                });
+                prenotazioniBody.appendChild(tr);
+            }
+        }
+    </script>
+</body>
+</html>
